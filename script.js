@@ -41,7 +41,16 @@ let userInput = document.getElementById("txtInput");
 let list_items = document.getElementById("listItems");
 let liDelButtons = document.getElementsByClassName("liDel");
 
-btnAdd.addEventListener("click", () => {
+btnAdd.addEventListener("click", addTodoListItem);
+
+userInput.addEventListener("keyup", function(event){
+  event.preventDefault();
+  if(event.key === "Enter"){
+    addTodoListItem();
+  }
+});
+
+function addTodoListItem(){
   if (userInput.value == "") {
     alert("invalid input");
     return;
@@ -80,7 +89,8 @@ btnAdd.addEventListener("click", () => {
 
   list_items.append(liElem);
   userInput.value = "";
-});
+}
+
 
 console.log("something done before script ended");
 console.log("Script Ended!");
